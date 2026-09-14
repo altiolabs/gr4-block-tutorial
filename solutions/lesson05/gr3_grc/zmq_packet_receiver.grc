@@ -1,0 +1,37 @@
+options:
+  parameters:
+    id: zmq_packet_receiver
+    title: GR4 Packetizer PMT Receiver
+    author: GNU Radio
+    description: Receive bare uniform vectors using the legacy GR3 PMT codec
+    generate_options: no_gui
+    output_language: python
+    run_options: prompt
+  states:
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+blocks:
+- name: zeromq_pull_msg_source_0
+  id: zeromq_pull_msg_source
+  parameters:
+    address: tcp://127.0.0.1:5558
+    bind: 'False'
+    timeout: '100'
+  states:
+    coordinate: [80, 120]
+    rotation: 0
+    state: enabled
+- name: blocks_message_debug_0
+  id: blocks_message_debug
+  parameters:
+    en_uvec: 'True'
+    log_level: info
+  states:
+    coordinate: [440, 120]
+    rotation: 0
+    state: enabled
+connections:
+- [zeromq_pull_msg_source_0, out, blocks_message_debug_0, print]
+metadata:
+  file_format: 1

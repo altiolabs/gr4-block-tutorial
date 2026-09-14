@@ -1,0 +1,5 @@
+@PACKAGE_INIT@
+include(CMakeFindDependencyMacro)
+find_dependency(gnuradio4 CONFIG)
+include("${CMAKE_CURRENT_LIST_DIR}/gnuradio4TutorialTargets.cmake")
+check_required_components(gnuradio4Tutorial)
